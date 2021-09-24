@@ -1,5 +1,6 @@
 <template>
-    <a-input :value="value" @input="emitInput"></a-input>
+    <!-- :value="value" @input="emitInput" -->
+    <a-input v-model="data" :placeholder="label"></a-input>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
@@ -28,10 +29,14 @@ export default defineComponent({
             default: false,
         },
     },
-    data() {},
-    methods: {
-        emitInput($event) {
-            this.$emit("input", $event);
+    data() {
+        return {
+            data: this.value,
+        };
+    },
+    watch: {
+        data(val) {
+            this.$emit("input", val);
         },
     },
 });

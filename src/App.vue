@@ -6,12 +6,7 @@ import TextWidget from "./components/input/TextWidget.vue";
 </script>
 
 <template>
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Hello Vue 3 + Vite" />
-
-    <div style="width: 300">
-        <TextWidget />
-    </div>
+    <router-view />
 </template>
 
 <style>
