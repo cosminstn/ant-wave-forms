@@ -3,7 +3,7 @@
         <a-col :xs="12">
             <p>Wave Form example:</p>
 
-            <highlightjs autodetect :code="JSON.stringify(schema)" />
+            <highlightjs autodetect :code="serialize(schema)" />
         </a-col>
     </a-row>
     <a-row :gutter="12">
@@ -16,14 +16,14 @@
         <highlightjs
             v-if="formData != null"
             autodetect
-            :code="JSON.stringify(formData)"
+            :code="serialize(formData)"
         />
     </a-row>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-
+import * as JSONfn from "json-fn";
 export default defineComponent({
     data() {
         return {
@@ -32,6 +32,9 @@ export default defineComponent({
                     type: "text",
                     required: true,
                     label: "First Name",
+                    validator: function (value) {
+                        return value.length > 10 ? true : "Value too short!";
+                    },
                 },
                 lastName: {
                     type: "text",
@@ -46,6 +49,14 @@ export default defineComponent({
             },
             formData: {},
         };
+    },
+    methods: {
+        serialize(data: Object): String {
+            return JSONfn.stringify(data);
+        },
+        deserialize(string: String): Object {
+            return JSONfn.parse(string);
+        },
     },
 });
 </script>

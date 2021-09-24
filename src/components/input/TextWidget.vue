@@ -31,7 +31,7 @@ export default defineComponent({
     },
     data() {
         return {
-            data: this.value,
+            data: this.modelValue,
         };
     },
     watch: {

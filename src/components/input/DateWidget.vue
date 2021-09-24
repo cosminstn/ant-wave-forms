@@ -1,5 +1,5 @@
 <template>
-    <a-date-picker v-model.value="data" />
+    <a-date-picker v-model:value="data" :placeholder="label" />
 </template>
 
 <script lang="ts">
@@ -9,6 +9,10 @@ export default defineComponent({
     name: "DateWidget",
     props: {
         modelValue: {
+            type: String,
+            default: null,
+        },
+        label: {
             type: String,
             default: null,
         },
