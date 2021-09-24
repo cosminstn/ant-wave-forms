@@ -25,6 +25,10 @@ export default defineComponent({
             type: Object,
             required: true,
         },
+        modelValue: {
+            type: Object,
+            required: false,
+        },
     },
     created() {
         // TODO: Check that the schema is fully valid
@@ -46,13 +50,23 @@ export default defineComponent({
             }
 
             // configure form data value
-            this.formData[field] = null;
+            this.formData[field] =
+                this.modelValue != null ? this.modelValue[field] : null;
         }
     },
     data() {
         return {
             formData: {},
         };
+    },
+    watch: {
+        formData: {
+            deep: true,
+            immediate: true,
+            handler: function (val) {
+                this.$emit("update:modelValue", val);
+            },
+        },
     },
     methods: {
         getWidgetType(fieldType: String): String {

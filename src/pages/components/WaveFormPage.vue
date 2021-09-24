@@ -8,8 +8,16 @@
     </a-row>
     <a-row :gutter="12">
         <a-col :xs="12">
-            <WaveForm :schema="schema" />
+            <WaveForm :schema="schema" v-model="formData" />
         </a-col>
+    </a-row>
+
+    <a-row>
+        <highlightjs
+            v-if="formData != null"
+            autodetect
+            :code="JSON.stringify(formData)"
+        />
     </a-row>
 </template>
 
@@ -36,6 +44,7 @@ export default defineComponent({
                     label: "Birth Date",
                 },
             },
+            formData: {},
         };
     },
 });
