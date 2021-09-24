@@ -2,7 +2,6 @@
     <a-row type="flex" justify="center">
         <a-col :xs="12">
             <p>Basic use case</p>
-
             <TextWidget v-model="text1" label="Hai noroc! Cf?" />
         </a-col>
     </a-row>
