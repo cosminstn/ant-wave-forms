@@ -25,6 +25,8 @@ plugins: [
 ],
 ```
 
+# Breaking changes to v-model
+https://github.com/vuejs/rfcs/blob/master/active-rfcs/0011-v-model-api-change.md
 
 
 ## Recommended IDE Setup

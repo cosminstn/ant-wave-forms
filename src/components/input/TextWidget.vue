@@ -1,6 +1,6 @@
 <template>
     <!-- :value="value" @input="emitInput" -->
-    <a-input v-model="data" :placeholder="label"></a-input>
+    <a-input v-model:value="data" :placeholder="label"></a-input>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
@@ -8,7 +8,7 @@ import { defineComponent } from "vue";
 export default defineComponent({
     name: "TextWidget",
     props: {
-        value: {
+        modelValue: {
             type: String,
             default: null,
         },
@@ -36,7 +36,7 @@ export default defineComponent({
     },
     watch: {
         data(val) {
-            this.$emit("input", val);
+            this.$emit("update:modelValue", val);
         },
     },
 });
